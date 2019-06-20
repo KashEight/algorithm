@@ -70,6 +70,9 @@ int main() {
     ifstream input_file;
     input_file.open("shuffle_code.txt");
 
+    // dist から直接実行した場合の処理
+    if (!input_file) input_file.open("../shuffle_code.txt");
+
     // shuffule_code.txt からデータ読み込んで配列に格納
     for (int i = 0; i < n; ++i) input_file >> ex_arr[i];
 
@@ -84,6 +87,9 @@ int main() {
 
     // 終わりの時間を記録
     clock_t end = clock();
+
+    // テスト用
+    for (int i = 0; i < n; ++i) assert(i == ex_arr[i]);
 
     // 実行時間の表示
     cout << (double)(end - start) / CLOCKS_PER_SEC << endl;
